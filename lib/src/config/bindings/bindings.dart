@@ -23,7 +23,7 @@ _Bindings _cachedBindings;
 
 _Bindings get bindings => _cachedBindings ??= _Bindings();
 
-const VERSION = '0.0.2';
+const VERSION = '0.0.3';
 const FILE = 'decrypt';
 
 Future<bool> get downloadLibrary => download(FILE,version: VERSION);
