@@ -14,7 +14,7 @@ dependencies:
     linkv_sdk:
         git:
           url: git@github.com:linkv-io/dart-sdk.git
-          ref: 0.0.3
+          ref: 0.0.4
 ```
 
 ```sh
