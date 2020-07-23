@@ -1,6 +1,6 @@
 name: linkv_sdk
 description: LINKV SDK for the DART programming language.
-version: 0.0.3
+version: 0.0.4
 homepage: https://www.linkv.sg
 environment:
   sdk: '>=2.5.0 <3.0.0'

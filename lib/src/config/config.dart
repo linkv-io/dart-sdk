@@ -23,7 +23,7 @@ class _Config {
   String _parseSecret(String appID, String appSecret) {
     var plain = bindings.decrypt(Utf8.toUtf8(appID), Utf8.toUtf8(appSecret));
     var plainText = Utf8.fromUtf8(plain);
-    free(plain);
+    bindings.release(plain);
     return plainText;
   }
 
