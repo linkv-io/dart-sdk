@@ -11,7 +11,7 @@ LINKV SDK for the dart programming language.
 **pubspec.yaml** 
 ```sh
 dependencies:
-    linkv_encrypt_sdk:
+    linkv_sdk:
         git:
           url: git@github.com:linkv-io/dart-sdk.git
           ref: 0.0.3
