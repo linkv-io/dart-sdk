@@ -8,7 +8,7 @@ void main() async {
     return;
   }
   var imConfig = linkv.im.getConfig();
-  print(imConfig.apiURI);
+  print(imConfig.url);
   var rtcConfig = linkv.rtc.getConfig();
-  print(rtcConfig.apiID);
+  print(rtcConfig.appID);
 }

@@ -1,16 +1,16 @@
 class imConfig {
-  final String appName;
-  final String apiID;
-  final String apiKey;
-  final String apiURI;
+  final String appID;
+  final String appKey;
+  final String appSecret;
+  final String url;
 
-  imConfig._(this.appName, this.apiID, this.apiKey, this.apiURI);
+  imConfig._(this.appID, this.appKey, this.appSecret, this.url);
 
   factory imConfig.fromJson(Map<String, dynamic> json) {
-    var appName = json['app_name'] ?? '';
-    var apiID = json['api_id'] ?? '';
-    var apiKey = json['api_key'] ?? '';
-    var apiURI = json['url'] ?? '';
-    return imConfig._(appName, apiID, apiKey, apiURI);
+    var appID = json['app_id'] ?? '';
+    var appKey = json['app_key'] ?? '';
+    var appSecret = json['app_secret'] ?? '';
+    var url = json['url'] ?? '';
+    return imConfig._(appID, appKey, appSecret, url);
   }
 }

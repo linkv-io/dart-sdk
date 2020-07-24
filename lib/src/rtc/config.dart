@@ -1,12 +1,12 @@
 class rtcConfig {
-  final String apiID;
-  final String apiKey;
+  final String appID;
+  final String appKey;
 
-  rtcConfig._(this.apiID, this.apiKey);
+  rtcConfig._(this.appID, this.appKey);
 
   factory rtcConfig.fromJson(Map<String, dynamic> json) {
-    var apiID = json['api_id'] ?? '';
-    var apiKey = json['api_key'] ?? '';
-    return rtcConfig._(apiID, apiKey);
+    var appID = json['app_id'] ?? '';
+    var appKey = json['app_key'] ?? '';
+    return rtcConfig._(appID, appKey);
   }
 }
