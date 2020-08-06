@@ -1,14 +1,14 @@
 import '../config/config.dart';
 import 'config.dart' show imConfig;
 
-class _IM {
-  _IM();
+abstract class LvIM {
+  factory LvIM() => im._();
+}
+
+class im implements LvIM {
+  im._();
 
   imConfig getConfig() {
     return config.im;
   }
 }
-
-_IM _cachedIM;
-
-_IM get im => _cachedIM ??= _IM();

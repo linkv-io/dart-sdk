@@ -1,13 +1,16 @@
 import 'dart:convert' show json;
 import 'package:ffi/ffi.dart';
+import 'package:linkv_sdk/src/live/live.dart';
 import 'bindings/bindings.dart';
 
 import '../im/config.dart' show imConfig;
 import '../rtc/config.dart' show rtcConfig;
+import '../live/config.dart' show liveConfig;
 
 class _Config {
   imConfig im;
   rtcConfig rtc;
+  liveConfig live;
 
   _Config();
 
@@ -28,10 +31,16 @@ class _Config {
   }
 
   void _parseConfig(String jsonData) {
-    print('json:${jsonData}\n');
     var jsonMap = json.decode(jsonData);
-    im = imConfig.fromJson(Map<String, dynamic>.from(jsonMap['im'] ?? {}));
-    rtc = rtcConfig.fromJson(Map<String, dynamic>.from(jsonMap['rtc'] ?? {}));
+    im = imConfig.fromJson(
+      Map<String, dynamic>.from(jsonMap['im'] ?? {}),
+    );
+    rtc = rtcConfig.fromJson(
+      Map<String, dynamic>.from(jsonMap['rtc'] ?? {}),
+    );
+    live = liveConfig.fromJson(
+      Map<String, dynamic>.from(jsonMap['sensor'] ?? {}),
+    );
   }
 }
 

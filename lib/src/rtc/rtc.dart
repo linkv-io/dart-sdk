@@ -1,14 +1,14 @@
 import '../config/config.dart';
 import 'config.dart' show rtcConfig;
 
-class _RTC {
-  _RTC();
+abstract class LvRTC {
+  factory LvRTC() => rtc._();
+}
+
+class rtc implements LvRTC {
+  rtc._();
 
   rtcConfig getConfig() {
     return config.rtc;
   }
 }
-
-_RTC _cachedRTC;
-
-_RTC get rtc => _cachedRTC ??= _RTC();
