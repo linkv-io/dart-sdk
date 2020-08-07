@@ -52,7 +52,7 @@ Future<Map<String, dynamic>> _getGoldByLiveOpenID(live o, String liveOpenID) {
 
   var uri = o.GetConfig().url + '/open/finanv0/getUserTokens';
 
-  return http().PostDataWithHeader(uri, params).then((response) {
+  return http().GetDataWithHeader(uri, params).then((response) {
     if (response.statusCode != 200) {
       return Future.value({
         'status': false,

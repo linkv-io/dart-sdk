@@ -35,10 +35,10 @@ void main() async {
   print('golds0:${golds0}');
 
   // 完成订单
-  var uniqueID = '1234';
+  var uniqueID = '12345';
   var gold = 10;
   var r1 = await live.SuccessOrderByLiveOpenID(openID, uniqueID,
-      linkv.OrderType.Add, gold, 10, 1, linkv.PlatformType.H5);
+      linkv.OrderType.Add, gold, 10, 1, linkv.PlatformType.H5, '');
   if (!r1['status']) {
     print('await live.SuccessOrderByLiveOpenID');
     return;
@@ -50,7 +50,7 @@ void main() async {
   }
 
   // 修改金币
-  var uniqueID1 = '4567';
+  var uniqueID1 = '45678';
   var r2 = await live.ChangeGoldByLiveOpenID(
       openID, uniqueID1, linkv.OrderType.Del, gold, 1);
   if (!r2['status']) {

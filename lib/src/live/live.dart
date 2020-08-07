@@ -51,7 +51,7 @@ abstract class LvLIVE {
       int money,
       int expr,
       PlatformType plat,
-      {String optionalOrderID});
+      String orderID);
 
   /// return {'status':true,'error':''}
   external Future<Map<String, dynamic>> ChangeGoldByLiveOpenID(
@@ -89,9 +89,9 @@ class live implements LvLIVE {
           int money,
           int expr,
           PlatformType plat,
-          {String optionalOrderID = ''}) =>
-      _successOrderByLiveOpenID(this, liveOpenID, uniqueID, typ, gold, money,
-          expr, plat, optionalOrderID);
+          String orderID) =>
+      _successOrderByLiveOpenID(
+          this, liveOpenID, uniqueID, typ, gold, money, expr, plat, orderID);
 
   @override
   Future<Map<String, dynamic>> ChangeGoldByLiveOpenID(
