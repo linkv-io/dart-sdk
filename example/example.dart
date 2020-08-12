@@ -8,7 +8,7 @@ void main() async {
     print('await linkv.init');
     return;
   }
-  // 初始化 直播对象
+  // 初始化 live对象
   var live = linkv.newLvLIVE();
 
   var thirdUID = 'test-dart-tob';
@@ -35,10 +35,10 @@ void main() async {
   print('golds0:${golds0}');
 
   // 完成订单
-  var uniqueID = '12345';
+  var orderID = '';
   var gold = 10;
-  var r1 = await live.SuccessOrderByLiveOpenID(openID, uniqueID,
-      linkv.OrderType.Add, gold, 10, 1, linkv.PlatformType.H5, '');
+  var r1 = await live.SuccessOrderByLiveOpenID(
+      openID, linkv.OrderTypeAdd, gold, 10, 1, linkv.PlatformTypeH5, orderID);
   if (!r1['status']) {
     print('await live.SuccessOrderByLiveOpenID');
     return;
@@ -50,9 +50,8 @@ void main() async {
   }
 
   // 修改金币
-  var uniqueID1 = '45678';
-  var r2 = await live.ChangeGoldByLiveOpenID(
-      openID, uniqueID1, linkv.OrderType.Del, gold, 1);
+  var r2 =
+      await live.ChangeGoldByLiveOpenID(openID, linkv.OrderTypeDel, gold, 1);
   if (!r2['status']) {
     print('await live.ChangeGoldByLiveOpenID');
     return;

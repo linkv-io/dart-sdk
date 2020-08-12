@@ -1,3 +1,7 @@
+# 0.4.4
+add retry 3 http
+modify code
+
 # 0.4.3
 fix live bugs
 

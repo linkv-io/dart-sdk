@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:math';
 import 'dart:convert' show json;
 import 'package:convert/convert.dart';
@@ -13,21 +14,17 @@ part 'order.dart';
 
 part 'gold.dart';
 
-enum SexType { Unknown, Female, Male }
-enum OrderType { Add, Del }
-enum PlatformType { H5, ANDROID, IOS }
+int SexTypeUnknown = -1;
+int SexTypeFemale = 0;
+int SexTypeMale = 1;
 
-String _getPlatformType(PlatformType plat) {
-  switch (plat) {
-    case PlatformType.H5:
-      return 'H5';
-    case PlatformType.ANDROID:
-      return 'Android';
-    case PlatformType.IOS:
-      return 'ios';
-  }
-  return '';
-}
+int OrderTypeAdd = 1;
+int OrderTypeDel = 2;
+String PlatformTypeH5 = 'h5';
+String PlatformTypeANDROID = 'android';
+String PlatformTypeIOS = 'ios';
+
+const waitTime = Duration(milliseconds: 300);
 
 abstract class LvLIVE {
   factory LvLIVE() => live._();
@@ -36,7 +33,7 @@ abstract class LvLIVE {
   external Future<Map<String, dynamic>> GetTokenByThirdUID(
       String thirdUID, String aID,
       {String userName = '',
-      SexType sex = SexType.Unknown,
+      int sex = -1,
       String portraitURI = '',
       String userEmail = '',
       String countryCode = '',
@@ -45,17 +42,16 @@ abstract class LvLIVE {
   /// return {'status':true,'error':'','golds':123}
   external Future<Map<String, dynamic>> SuccessOrderByLiveOpenID(
       String liveOpenID,
-      String uniqueID,
-      OrderType typ,
+      int orderType,
       int gold,
       int money,
       int expr,
-      PlatformType plat,
+      String platformType,
       String orderID);
 
   /// return {'status':true,'error':''}
   external Future<Map<String, dynamic>> ChangeGoldByLiveOpenID(
-      String liveOpenID, String uniqueID, OrderType typ, int gold, int expr,
+      String liveOpenID, int orderType, int gold, int expr,
       {String optionalReason = ''});
 
   /// return {'status':true,'error':'','golds':123}
@@ -72,7 +68,7 @@ class live implements LvLIVE {
   @override
   Future<Map<String, dynamic>> GetTokenByThirdUID(String thirdUID, String aID,
           {String userName = '',
-          SexType sex = SexType.Unknown,
+          int sex = -1,
           String portraitURI = '',
           String userEmail = '',
           String countryCode = '',
@@ -83,26 +79,37 @@ class live implements LvLIVE {
   @override
   Future<Map<String, dynamic>> SuccessOrderByLiveOpenID(
           String liveOpenID,
-          String uniqueID,
-          OrderType typ,
+          int orderType,
           int gold,
           int money,
           int expr,
-          PlatformType plat,
+          String platformType,
           String orderID) =>
-      _successOrderByLiveOpenID(
-          this, liveOpenID, uniqueID, typ, gold, money, expr, plat, orderID);
+      _successOrderByLiveOpenID(this, liveOpenID, orderType, gold, money, expr,
+          platformType, orderID);
 
   @override
   Future<Map<String, dynamic>> ChangeGoldByLiveOpenID(
-          String liveOpenID, String uniqueID, OrderType typ, int gold, int expr,
+          String liveOpenID, int orderType, int gold, int expr,
           {String optionalReason = ''}) =>
       _changeGoldByLiveOpenID(
-          this, liveOpenID, uniqueID, typ, gold, expr, optionalReason);
+          this, liveOpenID, orderType, gold, expr, optionalReason);
 
   @override
   Future<Map<String, dynamic>> GetGoldByLiveOpenID(String liveOpenID) =>
       _getGoldByLiveOpenID(this, liveOpenID);
+}
+
+String _genUniqueIDString() {
+  var nLen = 32;
+  var str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+
+  /// 生成的字符串固定长度
+  var container = '';
+  for (var i = 0; i < nLen; i++) {
+    container += str[Random().nextInt(str.length)];
+  }
+  return container;
 }
 
 String _genRandomString() {

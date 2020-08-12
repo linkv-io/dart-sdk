@@ -6,7 +6,15 @@ import 'src/im/im.dart';
 import 'src/rtc/rtc.dart';
 import 'src/live/live.dart';
 
-export 'src/live/live.dart' show OrderType, PlatformType, SexType;
+export 'src/live/live.dart'
+    show
+        OrderTypeAdd,
+        OrderTypeDel,
+        PlatformTypeH5,
+        PlatformTypeANDROID,
+        PlatformTypeIOS,
+        SexTypeFemale,
+        SexTypeMale;
 
 var version = '0.4.2';
 
