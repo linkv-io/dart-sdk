@@ -1,4 +1,6 @@
 [![API Reference](https://img.shields.io/badge/api-reference-blue.svg)]()
+![Dart Version](https://img.shields.io/badge/dart-%3e%3d2.5.0-blue.svg)
+![Dart Version](https://img.shields.io/badge/dart-%3c3.0.0-blue.svg)
 [![Build Status](https://img.shields.io/static/v1?label=build&message=passing&color=32CD32)]()
 [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-blue.svg)](https://github.com/linkv-io/dart-sdk/blob/master/LICENSE)
 
