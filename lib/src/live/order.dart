@@ -13,7 +13,7 @@ Future<Map<String, dynamic>> _successOrderByLiveOpenID(
     'nonce_str': _genRandomString(),
     'app_id': o.GetConfig().appKey,
     'uid': liveOpenID,
-    'request_id': _genUniqueIDString(),
+    'request_id': _genUniqueIDString(o.GetConfig().appKey),
     'type': orderType.toString(),
     'value': gold.toString(),
     'money': money.toString(),

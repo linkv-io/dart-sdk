@@ -6,7 +6,7 @@ Future<Map<String, dynamic>> _changeGoldByLiveOpenID(live o, String liveOpenID,
     'nonce_str': _genRandomString(),
     'app_id': o.GetConfig().appKey,
     'uid': liveOpenID,
-    'request_id': _genUniqueIDString(),
+    'request_id': _genUniqueIDString(o.GetConfig().appKey),
     'type': orderType.toString(),
     'value': gold.toString(),
     'expriation':

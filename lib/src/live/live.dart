@@ -100,12 +100,12 @@ class live implements LvLIVE {
       _getGoldByLiveOpenID(this, liveOpenID);
 }
 
-String _genUniqueIDString() {
-  var nLen = 32;
+String _genUniqueIDString(String appKey) {
+  var nLen = 9;
   var str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
 
   /// 生成的字符串固定长度
-  var container = '';
+  var container = appKey.substring(2) + '-';
   for (var i = 0; i < nLen; i++) {
     container += str[Random().nextInt(str.length)];
   }
