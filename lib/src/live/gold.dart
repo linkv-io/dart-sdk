@@ -84,7 +84,7 @@ Future<Map<String, dynamic>> _getGoldByLiveOpenID(
       Map<String, dynamic> data = result['data'];
       return {
         'status': true,
-        'golds': int.tryParse(data['livemeTokens']),
+        'golds': int.tryParse(data['tokens']),
       };
     }
 
